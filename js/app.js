@@ -26,16 +26,24 @@ function renderValuesOnMap(filteredItems = list) {
         li.classList.add('list-item', 'list-group-item', 'mt-2');
         li.setAttribute('id', key);
         li.innerHTML = `
-            <span class="list-item-text">${value}</span>
+            <span class="list-item-text">Запись: <strong>${value}</strong></span>
             <div class="mt-2">
                 <button class="btn btn-sm btn-warning mr-2" id="${key}" onclick="editItem(this)">Редактировать</button>
                 <button class="btn btn-sm btn-danger" id="${key}" onclick="deleteItem(this)">Удалить</button>
+            </div>
+            <div class="mt-2">
+                Дата создания: ${getDate()}
             </div>
         `;
         ul.append(li);
     });
 }
-
+function getDate() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const formattedDate = `${year}`;
+    return formattedDate;
+}
 function search(){
     const input = document.getElementById('searchInput');
     input.addEventListener('keyup', (e) => {
@@ -92,12 +100,14 @@ function deleteItem(button) {
 function editItem(button){
     const key = button.id;
     const value = prompt('Enter new value');
-    // в лист отправляем ключ и новое значение
-    list.set(key, value);
-    // функция для сохранения в локалсторадж
-    saveMapTolocalStorage();
-    // функция отображения на странице лишек
-    renderValuesOnMap();
+    if(value){
+        // в лист отправляем ключ и новое значение
+        list.set(key, value);
+        // функция для сохранения в локалсторадж
+        saveMapTolocalStorage();
+        // функция отображения на странице лишек
+        renderValuesOnMap();
+    }
 }
 
 // все методы есть в тетради не забыть 
