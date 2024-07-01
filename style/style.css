@@ -1,0 +1,16 @@
+.container{
+    max-width: 80% !important;
+}
+.list-item{
+    border-top: 0.02px solid rgb(214, 5, 5) !important;
+    border-bottom: 0.02px solid rgb(214, 5, 5) !important;
+    border: 0.02px solid rgb(214, 5, 5) !important;
+}
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0.02px solid rgb(214, 5, 5) !important;
+}
+input{
+    margin-right: 50px !important;
+}
